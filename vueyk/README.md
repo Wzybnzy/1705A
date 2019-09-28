@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # vueyk
 
 ## Project setup
@@ -28,7 +28,3 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-=======
-# 1705A
-10yue
->>>>>>> 765569e05c4cc3aa56e6f397c7dac80862c43dcd
