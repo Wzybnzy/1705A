@@ -51,6 +51,7 @@ export default {
     Item
   },
   created() {
+    console.log(1312321);
     this.$http.get("/api/list").then(res => {
       console.log(res);
       this.list = res.data;

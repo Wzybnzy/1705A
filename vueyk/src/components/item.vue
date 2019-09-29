@@ -1,12 +1,12 @@
 <template>
   <dl>
     <dt>
-      <img :src="item.coverUrl" />
+      <img :src="$attrs.item.coverUrl" />
     </dt>
     <dd>
-      <h3>{{ item.bookName }}</h3>
-      <p>作者:{{ item.authorName }}</p>
-      <p>更新:{{ item.updteChapterName }}</p>
+      <h3>{{ $attrs.item.bookName }}</h3>
+      <p>作者:{{ $attrs.item.authorName }}</p>
+      <p>更新:{{ $attrs.item.updteChapterName }}</p>
       <slot name="des"></slot>
       <slot name="button" :flag="falg"></slot>
     </dd>
@@ -21,14 +21,14 @@ export default {
       }
   },
   props: {
-    item: {
-      type: Object,
-      required: true,
-      default: () => {
-        //默认值，数组和对象必须通过函数来retrun
-        return {};
-      }
-    }
+    // item: {
+    //   type: Object,
+    //   required: true,
+    //   default: () => {
+    //     //默认值，数组和对象必须通过函数来retrun
+    //     return {};
+    //   }
+    // }
   }
 };
 </script>
