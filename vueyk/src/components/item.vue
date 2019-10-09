@@ -1,12 +1,12 @@
 <template>
-  <dl>
+  <dl @click="goToDetail(item)">
     <dt>
-      <img :src="$attrs.item.coverUrl" />
+      <img :src="item.coverUrl" />
     </dt>
     <dd>
-      <h3>{{ $attrs.item.bookName }}</h3>
-      <p>作者:{{ $attrs.item.authorName }}</p>
-      <p>更新:{{ $attrs.item.updteChapterName }}</p>
+      <h3>{{ item.bookName }}</h3>
+      <p>作者:{{ item.authorName }}</p>
+      <p>更新:{{ item.updteChapterName }}</p>
       <slot name="des"></slot>
       <slot name="button" :flag="falg"></slot>
     </dd>
@@ -21,14 +21,25 @@ export default {
       }
   },
   props: {
-    // item: {
-    //   type: Object,
-    //   required: true,
-    //   default: () => {
-    //     //默认值，数组和对象必须通过函数来retrun
-    //     return {};
-    //   }
-    // }
+    item: {
+      type: Object,
+      required: true,
+      default: () => {
+        //默认值，数组和对象必须通过函数来retrun
+        return {};
+      }
+    }
+  },
+  methods:{
+    goToDetail(obj){
+      console.log('详情');
+      console.log(this.$router,this.$route); //包含所有的路由   当前的路由信息
+      this.$router.push({
+        name:'detail',
+        params:{id:obj.bookId},
+        query:{obj}
+      });
+    }
   }
 };
 </script>
