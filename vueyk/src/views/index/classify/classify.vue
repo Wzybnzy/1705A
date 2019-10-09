@@ -33,11 +33,11 @@
     </div>
   </div>
 </template>
-
 <script>
 import "@/mock/index";
 import Item from "@/components/item.vue";
 export default {
+  name:'classify', 
   data() {
     return {
       titleArr: ["热门", "新书", "免费", "完本"],

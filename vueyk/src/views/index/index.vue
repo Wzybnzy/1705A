@@ -6,7 +6,9 @@
       <router-link to="/index/ranking" tag="li">排行</router-link>
       <router-link to="/index/book" tag="li">书架</router-link>
     </ul>
-    <router-view />
+    <keep-alive exclude="classify">
+        <router-view />
+    </keep-alive>
   </div>
 </template>
 
