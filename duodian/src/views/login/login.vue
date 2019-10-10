@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import { login } from "@/api/api";
 export default {
   data() {
     return {
@@ -17,12 +17,37 @@ export default {
   },
   created() {},
   methods: {
-    goToLogin() {
-      axios
-        .post("/api/user/login", { phone: this.phone, password: this.pwd })
-        .then(res => {
-          console.log(res);
-        });
+    async goToLogin() {
+      try {
+        let res = await login({ phone: this.phone, password: this.pwd }); //await后边跟的是一个promise对象。await必须是在async里面使用
+        console.log(res);
+        if (res.data.code == 1) {
+          window.localStorage.token = res.data.data.token;
+        }
+        this.$router.push({ path: this.$route.query.redirect });
+      } catch (e) {
+        if (e.response.data.code === 0) {
+          //当前没有这个手机号，1、错误提示 2、 去注册
+          this.$router.push({ path: "/register" }); //去注册
+        }
+      }
+
+      // axios
+      //   .post("/api/user/login", { phone: this.phone, password: this.pwd })
+      //   .then(res => {
+      //     console.log(res);
+      //     //登录成功
+      //     // 1、存token  2、跳转路由
+      //     if(res.data.code == 1){
+      //       window.localStorage.token = res.data.data.token;
+      //     }
+      //     this.$router.push({path:this.$route.query.redirect});
+      //   }).catch((e)=>{
+      //     if(e.response.data.code === 0){ //当前没有这个手机号，1、错误提示 2、 去注册
+      //         this.$router.push({path:'/register'}); //去注册
+      //     }
+      //     console.log(e.response.data);
+      //   })
     }
   }
 };
