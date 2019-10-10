@@ -3,6 +3,7 @@
     <input placeholder="请输入手机号" v-model="phone" />
     <input placeholder="请输入密码" v-model="pwd" />
     <div class="login" @click="goToLogin">登录</div>
+    <!-- <Item> -->
   </div>
 </template>
 
@@ -28,6 +29,7 @@ export default {
       } catch (e) {
         if (e.response.data.code === 0) {
           //当前没有这个手机号，1、错误提示 2、 去注册
+          // this.$toast(e.response.data.data.mes,1500);
           this.$router.push({ path: "/register" }); //去注册
         }
       }

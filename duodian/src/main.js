@@ -2,6 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/router'
 import store from './store/store'
+import Toast from 'toats'
+
+// Vue.use(Toast); install
+
 
 Vue.config.productionTip = false
 
