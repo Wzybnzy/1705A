@@ -12,5 +12,13 @@ export const banner = ()=> axios.get('/api/home/banner');
 export const shop = (params)=> axios.get('/api/home/shop',{params});
 
 
+//获取分类列表
+
+export const shopType = ()=> axios.get('/api/shop/shopType');
+//筛选分类
+export const selectType = (params)=> axios.get('/api/shop/selectType',{params});
+
+
+
 
 
