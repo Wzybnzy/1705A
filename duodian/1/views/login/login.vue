@@ -3,6 +3,7 @@
     <input placeholder="请输入手机号" v-model="phone" />
     <input placeholder="请输入密码" v-model="pwd" />
     <div class="login" @click="goToLogin">登录</div>
+    <span class="login" @click="goToRegister" v-if="show">注册</span>
     <!-- <Item> -->
   </div>
 </template>
@@ -13,7 +14,8 @@ export default {
   data() {
     return {
       phone: "",
-      pwd: ""
+      pwd: "",
+      show:false
     };
   },
   created() {},
@@ -27,11 +29,13 @@ export default {
         }
         this.$router.push({ path: this.$route.query.redirect });
       } catch (e) {
+        console.log(e.response);
         if (e.response.data.code === 0) {
           //当前没有这个手机号，1、错误提示 2、 去注册
-          console.log(e.response.data);
-          this.$toast(e.response.data.msg,3500);  
-          // this.$router.push({ path: "/register" }); //去注册
+          // this.$toast(e.response.data.data.mes,1500);
+          this.show = true;
+          this.$toast(e.response.data.msg,1500);
+        } else {
         }
       }
 
@@ -51,6 +55,9 @@ export default {
       //     }
       //     console.log(e.response.data);
       //   })
+    },
+    goToRegister(){
+      this.$router.push({ path: "/register" }); //去注册
     }
   }
 };
