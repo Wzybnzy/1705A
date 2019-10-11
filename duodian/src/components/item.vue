@@ -1,7 +1,7 @@
 <template>
   <dl>
     <dt>
-      <img :src="item.cover" alt="" />
+      <img v-lazy="item.cover" alt="" />
     </dt>
     <dd>
       <h3>{{item.name}}</h3>
@@ -25,7 +25,7 @@ export default {
     }
   },
   created() {
-    console.log(this);
+    // console.log(this);
   }
 };
 </script>
