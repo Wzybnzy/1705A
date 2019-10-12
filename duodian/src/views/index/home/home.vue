@@ -53,6 +53,7 @@ export default {
   methods: {
     _initScroll() {
       this.myScroll = new BScroll(".scroll", {
+        click:true,
         pullDownRefresh: {
           //下拉刷新
           threshold: 50

@@ -23,7 +23,8 @@
           {{ item.name }}
         </li>
       </ol>
-      <Item v-for="(item, index) in rightList" :key="index" :item="item" />
+      <div v-if="rightList && rightList.length == 0">暂无数据</div>
+      <Item v-for="(item, index) in rightList" :key="index" :item="item" v-else/>
     </div>
   </div>
 </template>
@@ -48,20 +49,24 @@ export default {
     // console.log(this.ind);
     this.leftList = res.data.data;
     this.getRightList();
-    console.log(res, right);
+    console.log(res);
   },
   methods: {
     goToRight(ind) {
       //点击左侧切换
       this.ind = ind;
+      this.cur = 0;
       this.getRightList();
     },
     changeSelect(ind) {
       //点击二级切换
       this.cur = ind;
+      this.getRightList();
+
     },
     async getRightList() { //获取右侧数据
-      let right = await selectType({ type_id: this.leftList[this.ind].id });
+      let category_id = this.leftList[this.ind].children.length > 0 && this.leftList[this.ind].children[this.cur].id;
+      let right = await selectType({ type_id: this.leftList[this.ind].id ,category_id:category_id});
       this.rightList = right.data.data;
     }
   }
