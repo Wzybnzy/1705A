@@ -24,6 +24,8 @@ export const selectType = (params)=> httpAxios.get('/api/shop/selectType',{param
 
 //添加购物车
 export const addCar = (params)=> httpAxios.post('/api/car/addCar',params);
+//获取购物车商品
+export const getCar = (params)=> httpAxios.get('/api/car/getCar',{params});
 
 
 

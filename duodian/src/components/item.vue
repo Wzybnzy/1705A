@@ -8,7 +8,9 @@
       <p>累计{{ (item.volume / 10000).toFixed(1) }}万份</p>
       <div class="price">
         <span>价格：{{ item.price }}</span>
-        <span @click="goToShop(item.id)">购物车</span>
+        <slot>
+            <span @click="goToShop(item.id)">购物车</span>
+        </slot>
       </div>
     </dd>
   </dl>
