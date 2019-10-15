@@ -1,11 +1,14 @@
 import React from 'react';
 // import logo from './logo.svg';
-import './App.css';
-import Index from './views/index/index.js'
+import '@/css/style.scss';
+// import Index from '@/views/index/index.js'
+
+import RootRouter from '@/router/index'
 function App() {
   return (
     <div className="App">
-      <Index />
+      <RootRouter />
+      {/* <Index /> */}
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

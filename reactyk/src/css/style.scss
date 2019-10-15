@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.title{
+    height: 44px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding:  0 10px;
+    box-sizing: border-box; 
+    align-items: center;
+}
+
+.titlelist{
+    height: 44px;
+    width: 100%;
+    display: flex;
+    background: #2873FF;
+    align-items: center;
+    img{
+        height: 30px;
+        width: 30px;
+        display: inline-block;
+        transition: all 1s;
+    }
+    .imgactive{
+        transform: rotate(180deg);
+    }
+    ul{
+        flex: 1;
+        display: flex;
+        li{
+            flex: 1;
+        }
+    }
+}
