@@ -3,6 +3,9 @@
     padding: 0;
     list-style: none;
 }
+.index{
+    position: relative;
+}
 .title{
     height: 44px;
     width: 100%;
@@ -33,6 +36,52 @@
         display: flex;
         li{
             flex: 1;
+        }
+    }
+}
+.mark{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.3);
+    .nav{
+        height: 100px;
+        width: 100px;
+        background: #fff;
+        position: absolute;
+        right: 0;
+        top: 88px;
+    }
+}
+
+.none{
+    display: none;
+}
+
+.sticky{
+    position: sticky;
+    top:0;
+}
+.fixedcity{
+    position: fixed;
+    right: 10px;
+    top: 99px;
+    width: 30px;
+    background: #ccc;
+}
+.citylist{
+    h3{
+        line-height: 44px;
+    }
+    ul{
+        li{
+            img{
+                height: 36px;;
+                width: 36px;;
+                display: inline-block;
+            }
         }
     }
 }

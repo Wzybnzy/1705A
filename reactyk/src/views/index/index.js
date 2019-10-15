@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
 import Head from '@/components/head'
-import {Switch,Route,Redirect} from 'react-router-dom'
-import Home from '@/views/index/home/home'
-import Find from '@/views/index/find/find'
-import Frunt from '@/views/index/frunt/frunt'
+
+import Routerview from '@/router/routerview'
 export default class Index extends Component {
     render() {
+        console.log(this.props);
         return (
-            <div>
-                <Head />
-                <Switch>
+            <div className="index">
+                <Head/>
+                <Routerview routes={this.props.child}/>
+                {/* <Switch>
                     <Route path="/index/home" component={Home}/>
                     <Route path="/index/find" component={Find}/>
                     <Route path="/index/frunt" component={Frunt}/>
                     <Redirect from="/index" to="/index/home"/>
-                </Switch>
+                </Switch> */}
                 
             </div>
         )
