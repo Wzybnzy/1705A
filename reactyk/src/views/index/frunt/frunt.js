@@ -4,7 +4,7 @@ export default class Frunt extends Component {
     render() {
         return (
             <div>
-                论坛
+                funrt
             </div>
         )
     }
