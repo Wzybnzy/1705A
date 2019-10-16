@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import isLogin from '@/utils/islogin'
 
-export default class My extends Component {
+
+class My extends Component {
     render() {
         return (
             <div>
@@ -9,3 +11,5 @@ export default class My extends Component {
         )
     }
 }
+
+export default isLogin(My);

@@ -13,7 +13,6 @@ function RouterView(props) {
                 }} />).concat(redirectArr)
         }  
     </Switch>
-
 }
 
 

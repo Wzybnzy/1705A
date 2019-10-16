@@ -34,7 +34,7 @@ class Head extends Component {
                 <div className="title">
                     <p>汽车之家</p>
                     <span onClick={this.handleClickSearch.bind(this)}>搜索</span>
-                    <span>我的</span>
+                    <span onClick={this.handleClickMy.bind(this)}>我的</span>
                 </div>
                 <div className={`titlelist ${sticky ? 'sticky' :''} `}>
                     <ul>
@@ -77,6 +77,9 @@ class Head extends Component {
     handleClickSearch(){
         console.log(this.props);
         this.props.history.push('/search');
+    }
+    handleClickMy(){
+        this.props.history.push('/my');
     }
 }
 
