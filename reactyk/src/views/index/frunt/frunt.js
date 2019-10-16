@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {ADD,DEL,COUNT,ADD_LIST,DEL_LIST} from '@/store/types'
+import '@/mock/index'
+import {getlist} from '@/store/city/cityactions'
+// import Axios from 'axios';
 console.log(connect,'connect');
 class Frunt extends Component {
     state = {
@@ -37,6 +40,12 @@ class Frunt extends Component {
     }
     handleDel(){
         this.props.delCount();
+    }
+    componentDidMount(){
+        this.props.getList();
+        // Axios.get('/api/city').then(()=>{
+
+        // })
     }
     changecount(count){
         console.log('changecount#################');
@@ -78,8 +87,11 @@ export default connect((state)=>{
         addlist(val){
             dispatch({type:ADD_LIST,val})
         },
-        dellist(ind){
+        dellist(ind){ 
             dispatch({type:DEL_LIST,ind})
+        },
+        getList(){ //thunk 
+            dispatch(getlist(123))
         }
     }
 })(Frunt);

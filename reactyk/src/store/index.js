@@ -1,6 +1,9 @@
-import { createStore,combineReducers } from 'redux'
+import { createStore,combineReducers,applyMiddleware } from 'redux'
 import count from './count/countreducer'
 import list from './list/listreducer'
+import city from './city/cityreducer'
+import thunk from 'redux-thunk'  
+import logger from 'redux-logger'  
 
 // const {createStore} = require('redux'); 
 
@@ -43,10 +46,11 @@ import list from './list/listreducer'
 
 const reducer = combineReducers({
     count,
-    list
+    list,
+    city
 })
 
-const store = createStore(reducer);
+const store = createStore(reducer,applyMiddleware(thunk,logger));
 // console.log(store.getState());
 // store.dispatch({type:'ADD'})
 // console.log(store.getState());
