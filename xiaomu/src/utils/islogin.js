@@ -12,7 +12,7 @@ const islogin = (Com)=>{
         }
         componentDidMount(){
             //判断本地是否存在
-            if(window.localStorage.user){ //登录了
+            if(window.localStorage.token){ //登录了
                 this.setState({isShow:true})
             } else {
                 this.props.history.push('/login');

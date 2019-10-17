@@ -12,7 +12,7 @@ export default class Login extends Component {
             <div>
                 <input placeholder="请输入用户名" value={username} name="username" onChange={this.handleChange.bind(this)}/>
                 <input placeholder="请输入密码" value={pwd} name="pwd" onChange={this.handleChange.bind(this)}/>
-                <p onClick={this.handleRegister.bind(this)} className={show ? 'active' :''}>注册</p>
+                <p onClick={this.handleRegister.bind(this)} style={show ? {color:'red'} :{}}>注册</p>
                 <button onClick={this.handleSubmit.bind(this)}>登录</button>
             </div>
         )
