@@ -5,7 +5,8 @@ class Head extends Component {
     static defaultProps = {
             back:false,
             title:'沐恩',
-            right:''
+            right:'',
+            url:''
     }
 
     render() {
@@ -18,10 +19,13 @@ class Head extends Component {
                         this.props.history.go(-1);
                     }}>&lt;</span> : null}
                     <h3>{title}</h3>
-                    <span>{right}</span>
+                    <span onClick={this.handlecreateVote.bind(this)}>{right}</span>
                 </header>
             </div>
         )
+    }
+    handlecreateVote(){
+        this.props.history.push('/createvote');
     }
 }
 

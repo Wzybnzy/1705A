@@ -1,0 +1,28 @@
+.tab{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 44px;;
+    ul{
+        display: flex;
+        li{
+            padding:  0 10px;
+            box-sizing: border-box;
+        }
+        li.active{
+            color: red;
+        }
+    }
+}
+.votelist{
+    dl{
+        display: flex;
+        img{
+            height: 120px;
+            width: 120px;
+        }
+        dd{
+            flex: 1;
+        }
+    }
+}
