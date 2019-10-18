@@ -1,0 +1,67 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+html,body,#root{
+  height: 100%;
+  width: 100%;
+}
+.index{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+.index >div{
+  flex: 1;
+}
+.index footer{
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #ccc;
+}
+.index footer a{
+  flex:1;
+  text-align: center;
+}
+
+.foods{
+  width: 100%;
+  position: relative;
+}
+.foods dl{
+  display: flex;
+}
+.foods dl dt{
+  height: 120px;
+  width: 120px;
+}
+.foods dl dt img{
+  height: 100%;
+  width: 100%;
+}
+.foods dl dd{
+  flex: 1;
+}
+.foods dl dd>div{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.foods > ul{
+  position: absolute;
+  right: 36px;
+  top: 36px;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+}
+.foods ul li{
+  flex: 1;
+  padding: 0 10px;
+  box-sizing: border-box;
+}

@@ -1,0 +1,17 @@
+[
+    {
+        "name":"主食",
+        "id":1,
+        "type":"food"
+    },
+    {
+        "name":"肉类",
+        "type":"meta",
+        "id":2
+    },
+    {
+        "name":"水果类",
+        "type":"fruits",
+        "id":3
+    }
+]
