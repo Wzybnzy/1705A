@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import '../../mock/index'
 import Food from '../../components/food'
-export default class Classify extends Component {
+import {connect} from 'react-redux'
+import {ADD_LIST} from '../../store/types'
+class Classify extends Component {
     state = {
         list:[],
         newlist:[]
@@ -16,6 +18,7 @@ export default class Classify extends Component {
                     newlist && newlist.map((item,index) => 
                     <Food 
                     handleStar = {this.handleStar.bind(this)}
+                    handleText = {this.handleText.bind(this)}
                     key={index} 
                     item={item}/>)
                 }
@@ -37,4 +40,26 @@ export default class Classify extends Component {
         list[ind].check = !list[ind].check;
         this.setState({list})
     }
+    handleText(cur,id){ //cur 点击的常吃不吃偶然的索引
+        console.log(cur,id);
+        let {list} = this.state;
+        let ind = list.findIndex(item => item.id == id);
+        list[ind].flag = cur;
+        list[ind].check = false;
+        this.setState({list})
+        this.props.addlist(list[ind]);
+    }
 }
+
+
+export default  connect((state)=>{
+    return {
+
+    }
+},(dispatch)=>{
+    return {
+        addlist(obj){
+            dispatch({type:ADD_LIST,obj})
+        }
+    }
+})(Classify)
