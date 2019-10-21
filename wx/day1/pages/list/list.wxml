@@ -1,0 +1,43 @@
+<import src="/pages/list/header.wxml"/>
+<include src="header.wxml" />
+<template is="head"></template>
+
+<view>
+  <h3>{{grade}}</h3>
+</view>
+
+<view>今天考及格了吗？</view>
+
+<view>
+  <view wx:if="{{flag < 60}}">不及格</view>
+  <view wx:elif="{{flag > 60 && flag < 80}}">及格</view>
+  <view wx:else>优秀</view>
+</view>
+
+<view hidden="{{show}}">今天周一啦</view>
+
+
+<view 
+wx:for="{{arr}}" 
+wx:for-item="obj" 
+wx:for-index="ind" 
+wx:key="ind"
+data-ind="{{ind}}"
+bindtap="goToDetail"
+>
+  <template is="list" data="{{ind,obj}}"></template>
+</view>
+
+
+<template name="list">
+  {{ind}}
+  <text>姓名：{{obj.name}}</text>
+  <text>年龄：{{obj.age}}</text>
+</template>
+
+
+
+
+<view wx:for="{{grade}}">
+  索引{{index}} 内容{{item}}
+</view>

@@ -1,0 +1,10 @@
+<template name="head">
+  <view>
+    <text>头部</text>
+  </view>
+</template>
+
+<view>
+其他的内容
+</view>
+
