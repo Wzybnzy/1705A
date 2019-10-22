@@ -1,0 +1,7 @@
+<!--pages/tab/tab.wxml-->
+<view class="tab">
+  <left list="{{list}}"  ind="{{ind}}" bindchangeind="change"></left>
+  <view class="right">
+   <view wx:for="{{list[ind].children}}">{{item.name}}</view>
+  </view>
+</view>

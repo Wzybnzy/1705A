@@ -1,0 +1,56 @@
+[
+  {
+    "title":"女装",
+    "id":1,
+    "children":[
+      {
+        "name":"裙子",
+        "img":"1.jpg"
+      },
+      {
+        "name": "裤子",
+        "img": "2.jpg"
+      },
+      {
+        "name": "衬衫",
+        "img": "3.jpg"
+      }
+    ]
+  },
+  {
+    "title": "男装",
+    "id": 2,
+    "children": [
+      {
+        "name": "西服",
+        "img": "1.jpg"
+      },
+      {
+        "name": "裤子男",
+        "img": "2.jpg"
+      },
+      {
+        "name": "衬衫男",
+        "img": "3.jpg"
+      }
+    ]
+  },
+  {
+    "title": "鞋子",
+    "id": 3,
+    "children": [
+      {
+        "name": "靴子",
+        "img": "1.jpg"
+      },
+      {
+        "name": "裤子",
+        "img": "2.jpg"
+      },
+      {
+        "name": "衬衫",
+        "img": "3.jpg"
+      }
+    ]
+  }
+]

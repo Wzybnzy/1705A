@@ -1,0 +1,14 @@
+<!--pages/list/list.wxml-->
+<view>
+  <text>{{mes}}</text>
+  <view 
+  wx:for="{{arr}}" 
+  wx:for-item="obj" 
+  data-ind="{{index}}"
+  bindtap="changeTap">
+    <view>{{obj.name}}</view>
+    <view>{{obj.age}}</view>
+  </view>
+
+  <view bindtap="goToLogs">去日志</view>
+</view>

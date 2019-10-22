@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import '@/mock/index'
+import {connect} from 'react-redux'
 
-
-export default class Home extends Component {
+ class Home extends Component {
     state = {
         list:[]
     }
     render() {
         let {list} = this.state;
+        console.log(this.props);
         return (
             <div>
                 {
@@ -31,3 +32,11 @@ export default class Home extends Component {
         this.setState({list:res.data.list})
     }
 }
+
+
+
+export default connect((state)=>{
+    return {
+
+    }
+})(Home);

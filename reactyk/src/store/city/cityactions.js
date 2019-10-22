@@ -16,6 +16,8 @@ export const getlist = (id) => async (dispatch)=>{
 
 
 
+
+
 // export const getcity = async (dispatch)=>{
 //     let res = await axios.get('/api/list');
 //     console.log(res.data);

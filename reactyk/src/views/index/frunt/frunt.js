@@ -91,7 +91,7 @@ export default connect((state)=>{
             dispatch({type:DEL_LIST,ind})
         },
         getList(){ //thunk 
-            dispatch(getlist(123))
+            dispatch(getlist)
         }
     }
 })(Frunt);
