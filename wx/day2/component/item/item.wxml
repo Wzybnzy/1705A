@@ -1,0 +1,10 @@
+<view>
+  <view>{{obj.title}}</view>
+  <radio-group class="radio-group">
+    <view wx:for="{{obj.options}}">
+      <radio class="radio" value="{{item.value}}" checked="{{item.check}}">
+        <text>{{item.value}}</text>
+      </radio>
+    </view>
+  </radio-group>
+</view>

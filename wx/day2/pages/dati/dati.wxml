@@ -1,0 +1,6 @@
+<view class="dati">
+  <item obj="{{list[cur]}}"></item>
+  <button bindtap="change" data-flag="{{false}}" wx:if="{{cur > 0}}">上一题</button>
+  <button bindtap="change" data-flag="{{true}}" wx:if="{{cur < list.length -1}}">下一题</button>
+  <button>提交</button>
+</view>

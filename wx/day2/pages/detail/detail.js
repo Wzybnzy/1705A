@@ -6,9 +6,21 @@ Page({
    */
   data: {
     name:'',
-    age:''
+    age:'',
+    val:'',
+    imgs:[
+      "https://goss4.cfp.cn/creative/vcg/800/new/VCG211178479315.jpg",
+      "https://goss2.cfp.cn/creative/vcg/800/new/VCG41N767982461.jpg"
+    ],
+    items: [
+      { name: 'USA', value: '美国' },
+      { name: 'CHN', value: '中国', checked: 'true' },
+      { name: 'BRA', value: '巴西' },
+      { name: 'JPN', value: '日本' },
+      { name: 'ENG', value: '英国' },
+      { name: 'TUR', value: '法国' },
+    ]
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -20,7 +32,23 @@ Page({
       name,age
     })
   },
+  changeInput({detail}){
+    // console.log(options);
+    this.setData({val:detail.value})
+  },
+  radioChange(options){
+    console.log(options);
 
+  },
+
+  checkboxChange(options){
+    console.log(options);
+  },
+
+  add(){
+    let {val} = this.data;
+    console.log(val);
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

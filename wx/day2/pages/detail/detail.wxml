@@ -1,5 +1,27 @@
 <!--pages/detail/detail.wxml-->
 <view>
-姓名：{{name}}
-年龄：{{age}}
+  姓名：{{name}} 年龄：{{age}}
 </view>
+
+<!-- <swiper>
+  <swiper-item wx:for="{{imgs}}">
+    <image src="{{item}}"></image>
+  </swiper-item>
+</swiper> -->
+
+<button bindtap="add">添加</button>
+<input value="{{val}}" placeholder="请输入内容" bindinput="changeInput"></input>
+
+
+<checkbox-group bindchange="checkboxChange">
+  <view class="checkbox" wx:for="{{items}}">
+    <checkbox value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+  </view>
+</checkbox-group>
+
+
+<radio-group class="radio-group" bindchange="radioChange">
+  <radio class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+    <text>{{item.value}}</text>
+  </radio>
+</radio-group>
