@@ -1,0 +1,28 @@
+/* pages/scroll/scroll.wxss */
+.scroll{
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+.left{
+  width: 120px;
+  height: 100%;
+  border-right: 1px solid #ccc;
+}
+.title{
+  font-size: 64rpx;
+}
+.left view{
+  line-height: 96rpx;
+}
+.active{
+  color: red;
+}
+.right{
+  flex: 1;
+  overflow-y:auto;
+}
+image{
+  width: 240rpx;
+  height: 240rpx;
+}

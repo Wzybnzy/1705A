@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/scroll/scroll",
     "pages/todolist/todolist",
     "pages/dati/dati",
     "pages/detail/detail",

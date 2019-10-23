@@ -1,0 +1,17 @@
+<view class="scroll">
+  <view class="left">
+    <view wx:for="{{list}}" data-ind="{{index}}" bindtap="changeTab" 
+    class="{{index == ind ? 'active':''}}">{{item.name}}</view>
+  </view>
+  <scroll-view class="right" scroll-y scroll-into-view="{{cur}}" bindscroll="scroll">
+
+    <view class="rightlist" wx:for="{{list}}" id="title{{index}}">
+      <view class="title">{{item.name}}</view>
+      <view wx:for="{{item.foods}}" wx:for-item="obj"  wx:for-index="ind">
+        <image src="{{obj.image}}"></image>
+        <view>{{obj.name}}</view>
+      </view>
+    </view>
+
+  </scroll-view>
+</view>
