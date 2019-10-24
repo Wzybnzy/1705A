@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     buyList: [],
-    allflag: false
+    allflag: false,
+    addList:[]
   },
   getters: {
     getList(state, getters) {
@@ -53,9 +54,20 @@ export default new Vuex.Store({
     changeCount(state, obj) { //点击加减  obj:{id:,count:}
       console.log('chufale');
       let ind = state.buyList.findIndex(item => item.id == obj.id);
-      state.buyList[ind].count = obj.count;
+      if(obj.count > 0){
+        state.buyList[ind].count = obj.count;
+      } else {
+        state.buyList.splice(ind,1)
+      }
       state.buyList = state.buyList.concat([]);
+    },
+    addresslist(state,obj){ //添加地址
+      state.addList.push(obj);
+    },
+    editlist(state,obj){ //编辑
+        state.addList[obj.ind] = obj.item;
     }
+
   },
   actions: {
   },

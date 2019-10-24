@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <span @click="goToAddlist">送至：{{add}}</span>
     <ul class="hometitle">
       <router-link to="/index/home/super" tag="li">多点超市</router-link>
       <router-link to="/index/home/selection" tag="li">全球精选</router-link>
@@ -9,7 +10,23 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return {
+      add:''
+    }
+  },
+  created(){
+    this.add = window.localStorage.address;
+  },
+  methods:{
+    goToAddlist(){
+      this.$router.push({
+        path:'/address'
+      });
+    }
+  }
+};
 </script>
 
 <style lang="scss">

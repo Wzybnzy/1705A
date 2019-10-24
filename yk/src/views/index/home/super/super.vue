@@ -27,6 +27,7 @@ export default {
     this.getList();
     this.$nextTick(() => {
       this.myScroll = new BScroll(".scroll", {
+        click:true,
         pullUpLoad: {
           //开启上拉加载
           threshold: -100 //往上拉多少哥距离，才能触发上拉加载的事件
