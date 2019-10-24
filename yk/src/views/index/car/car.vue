@@ -20,7 +20,6 @@
       </dd>
    </dl>
    <div>总价：{{getSumPrice}}</div>
-
   </div>
 </template>
 

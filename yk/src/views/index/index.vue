@@ -30,7 +30,8 @@ export default {
   flex-direction: column;
   >div{
     flex: 1;
-    overflow-y: auto;
+    // overflow-y: auto;
+    overflow: hidden;
   }
   footer{
     height: 50px;

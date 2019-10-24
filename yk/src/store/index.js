@@ -35,6 +35,7 @@ export default new Vuex.Store({
       } else {
         obj.count++;
       }
+      state.buyList = state.buyList.concat([])
     },
     changeCheck(state, obj) { //点击单选按钮  obj:{id:,checked:}
       //点击的是第几个
