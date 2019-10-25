@@ -62,3 +62,24 @@ dl dt img{
 dl dd {
   flex: 1;
 }
+.dialog{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 50px;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 99;
+}
+.dialogcontent{
+  height: 200px;
+  width: 100%;
+  overflow-y: auto;
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+}
+
+.dican{
+  position: relative;
+}

@@ -3,20 +3,22 @@ import axios from 'axios'
 import '../mock/index'
 import Item from '../components/item'
 import BScroll from 'better-scroll'
-import {connect} from 'react-redux'
- class Dican extends Component {
+import { connect } from 'react-redux'
+import {CHANGE_SHOP} from '../store/types'
+class Dican extends Component {
     state = {
         list: [],
         ind: 0,
-        scrollH:[]
+        scrollH: [],
+        show: false
     }
     render() {
-        let { list, ind } = this.state;
-        let {buyList} = this.props;
+        let { list, ind, show } = this.state;
+        let { buyList } = this.props;
         console.log(buyList);
-        let sum = buyList.reduce((prev,cur)=> prev + cur.count,0)
+        let sum = buyList.reduce((prev, cur) => prev + cur.count, 0)
         return (
-            <div>
+            <div className="dican">
                 <ul className="title">
                     <li>点餐</li>
                     <li>评价</li>
@@ -38,26 +40,47 @@ import {connect} from 'react-redux'
                         <div ref="right">
                             {
                                 list && list.map((item, index) =>
-                                    <Item key={index} item={item} ind={index} changecount={this.handleChangeCount.bind(this)}/>)
+                                    <Item key={index} item={item} ind={index} changecount={this.handleChangeCount.bind(this)} />)
                             }
                         </div>
 
                     </div>
                 </div>
-                <footer>购物车{sum}</footer>
+                {
+                    show ? <div className="dialog">
+                        <div className="dialogcontent">
+                            {
+                                buyList && buyList.map((item, index) => <div key={index}>
+                                    <div>名字:{item.name}</div>
+                                    <div>价格:{item.price}</div>
+                                    <div>
+                                        <span onClick={this.handleChangeDialog.bind(this,index,item.count-1)}>-</span>
+                                        <span>{item.count}</span>
+                                        <span onClick={this.handleChangeDialog.bind(this,index,item.count+1)}>+</span>
+                                    </div>
+                                </div>)
+                            }
+
+                        </div>
+                    </div> : null
+                }
+                <footer onClick={() => { this.setState({ show: !show }) }}>购物车{sum}</footer>
             </div>
         )
     }
-    handleChangeCount(ind,index,count){ //点击右侧加减的时候触发的事件
+    handleChangeCount(ind, index, count) { //点击右侧加减的时候触发的事件
         // console.log('触发函数',ind,index,count);
-        let {list} = this.state;
-        list[ind].foods[index].count = count; 
+        let { list } = this.state;
+        list[ind].foods[index].count = count;
 
         list.forEach(item => {
-            item.num = item.foods.reduce((prev,cur)=> prev + cur.count,0)
+            item.num = item.foods.reduce((prev, cur) => prev + cur.count, 0)
         })
 
-        this.setState({list})
+        this.setState({ list })
+    }
+    handleChangeDialog(ind,count){ //点击弹框的加号减号
+        this.props.changeshop(ind,count);
     }
     async componentDidMount() {
         let res = await axios.get('/api/list');
@@ -68,53 +91,55 @@ import {connect} from 'react-redux'
         })
 
         this.setState({ list: res.data.goods })
-        let {scrollH} = this.state;
+        let { scrollH } = this.state;
 
         //获取每一个盒子距离页面顶部的距离
         let child = Array.from(this.refs.right.children);
-        let last = child[child.length -1];
+        let last = child[child.length - 1];
         child.forEach(item => {
-            scrollH.push(item.offsetTop -45);
+            scrollH.push(item.offsetTop - 45);
         })
         scrollH.push(last.offsetHeight + last.offsetTop);
-        this.setState({scrollH})
+        this.setState({ scrollH })
         console.log(scrollH);
 
         this._initScroll();
-       
+
     }
-    _initScroll(){
+    _initScroll() {
         new BScroll('.left', {
             click: true
         });
         this.rightBScroll = new BScroll('.right', {
             click: true,
-            probeType:3
+            probeType: 3
         });
 
-        this.rightBScroll.on('scroll',({y})=>{
+        this.rightBScroll.on('scroll', ({ y }) => {
             let scrollY = Math.abs(y);
-            let {scrollH} = this.state;
-            scrollH.forEach((item,index) => {
-                if(scrollY >= item && scrollY < scrollH[index +1]){
-                    this.setState({ind:index})
+            let { scrollH } = this.state;
+            scrollH.forEach((item, index) => {
+                if (scrollY >= item && scrollY < scrollH[index + 1]) {
+                    this.setState({ ind: index })
                 }
             })
         });
     }
     handleChangeTab(index) {
         this.setState({ ind: index })
-        this.rightBScroll.scrollToElement('.title'+index, 100);
+        this.rightBScroll.scrollToElement('.title' + index, 100);
     }
 }
 
 
-export default connect((state)=>{
+export default connect((state) => {
     return {
-        buyList:state.list.list
+        buyList: state.list.list
     }
-},(dispatch)=>{
+}, (dispatch) => {
     return {
-
+       changeshop(ind,count){ //点击加减
+           dispatch({type:CHANGE_SHOP,ind,count})
+       }
     }
 })(Dican)
