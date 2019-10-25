@@ -3,8 +3,8 @@ import axios from 'axios'
 import '../mock/index'
 import Item from '../components/item'
 import BScroll from 'better-scroll'
-
-export default class Dican extends Component {
+import {connect} from 'react-redux'
+ class Dican extends Component {
     state = {
         list: [],
         ind: 0,
@@ -12,6 +12,9 @@ export default class Dican extends Component {
     }
     render() {
         let { list, ind } = this.state;
+        let {buyList} = this.props;
+        console.log(buyList);
+        let sum = buyList.reduce((prev,cur)=> prev + cur.count,0)
         return (
             <div>
                 <ul className="title">
@@ -27,7 +30,7 @@ export default class Dican extends Component {
                                     <li
                                         key={index}
                                         onClick={this.handleChangeTab.bind(this, index)}
-                                        className={index == ind ? 'active' : ''}>{item.name}</li>)
+                                        className={index == ind ? 'active' : ''}>{item.name}{item.num ? item.num : ''}</li>)
                             }
                         </ul>
                     </div>
@@ -35,18 +38,35 @@ export default class Dican extends Component {
                         <div ref="right">
                             {
                                 list && list.map((item, index) =>
-                                    <Item key={index} item={item} ind={index} />)
+                                    <Item key={index} item={item} ind={index} changecount={this.handleChangeCount.bind(this)}/>)
                             }
                         </div>
 
                     </div>
                 </div>
-                <footer>购物车</footer>
+                <footer>购物车{sum}</footer>
             </div>
         )
     }
+    handleChangeCount(ind,index,count){ //点击右侧加减的时候触发的事件
+        // console.log('触发函数',ind,index,count);
+        let {list} = this.state;
+        list[ind].foods[index].count = count; 
+
+        list.forEach(item => {
+            item.num = item.foods.reduce((prev,cur)=> prev + cur.count,0)
+        })
+
+        this.setState({list})
+    }
     async componentDidMount() {
         let res = await axios.get('/api/list');
+        console.log(res);
+        res.data.goods.forEach(item => {
+            item.num = 0; //左侧的数量
+            item.foods.map(item1 => item1.count = 0)
+        })
+
         this.setState({ list: res.data.goods })
         let {scrollH} = this.state;
 
@@ -60,6 +80,10 @@ export default class Dican extends Component {
         this.setState({scrollH})
         console.log(scrollH);
 
+        this._initScroll();
+       
+    }
+    _initScroll(){
         new BScroll('.left', {
             click: true
         });
@@ -71,10 +95,8 @@ export default class Dican extends Component {
         this.rightBScroll.on('scroll',({y})=>{
             let scrollY = Math.abs(y);
             let {scrollH} = this.state;
-            // console.log(scrollH);
             scrollH.forEach((item,index) => {
                 if(scrollY >= item && scrollY < scrollH[index +1]){
-                    console.log(index,'$$$$$$');
                     this.setState({ind:index})
                 }
             })
@@ -85,3 +107,14 @@ export default class Dican extends Component {
         this.rightBScroll.scrollToElement('.title'+index, 100);
     }
 }
+
+
+export default connect((state)=>{
+    return {
+        buyList:state.list.list
+    }
+},(dispatch)=>{
+    return {
+
+    }
+})(Dican)
