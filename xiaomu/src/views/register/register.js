@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {register} from '../../api/api'
-import {Toast} from 'antd-mobile'
+import Toast from 'antd-mobile/lib/toast';
+import 'antd-mobile/lib/toast/style/css';  
 export default class Register extends Component {
     state = {
         username:'',
@@ -51,7 +52,7 @@ export default class Register extends Component {
                 console.log(e.response);
             }
         } else {
-            Toast.info('密码不一致', 3);
+            Toast.info('密码不一致', 30);
             console.log('');
         }
     }
