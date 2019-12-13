@@ -42,7 +42,7 @@ const routes = [
         component: () => import('@/views/index/index.vue')
     },
     {
-        path: '/detail',
+        path: '/detail/:',
         name: 'detail',
         meta:{
             required:false,

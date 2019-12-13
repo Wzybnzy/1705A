@@ -28,6 +28,7 @@ export default {
           window.localStorage.token = res.data.data.token;
         }
         this.$router.push({ path: this.$route.query.redirect });
+        // this.$route
       } catch (e) {
         if (e.response.data.code === 0) {
           //当前没有这个手机号，1、错误提示 2、 去注册

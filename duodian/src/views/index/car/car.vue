@@ -28,6 +28,7 @@ export default {
       allflag: false
     };
   },
+  
   components: { Item },
   async created() {
     // console.log(user);

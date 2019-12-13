@@ -41,7 +41,6 @@ export default {
   },
   async created() {
     let res = await banner(); //获取banner
-
     this.bannerList = res.data.data;
     this.getList();
     console.log(this.list);
@@ -89,7 +88,7 @@ export default {
         console.log("么有数据");
         this.show = true;
       }
-
+      console.log(this.myScroll);
       this.myScroll.refresh();
       this.myScroll.finishPullUp(); //上拉加载完成之后要调用一下此方法
       this.myScroll.finishPullDown(); //下拉刷新完成之后要调用一下此方法
